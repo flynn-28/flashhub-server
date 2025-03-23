@@ -1,12 +1,11 @@
-version: '3.8'
+FROM python:3.9-slim
 
-services:
-  flashhub-server:
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - .:/app
-    environment:
-      - FLASK_ENV=development
-    command: python3 -m server
+WORKDIR /app
+
+COPY . /app
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python3", "-m", "server"]
