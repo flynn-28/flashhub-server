@@ -3,6 +3,28 @@
 ## Overview
 This project uses ruffle to emulate flash games in html, and flask to serve an html interface and an update route for adding games.
 
+## Quick start
+### with docker run
+```bash
+docker run -d -p 5000:5000 -v /path/to/swf/files flynn28/flashhub
+```
+### with docker compose
+```yaml
+version: '3.8'
+
+services:
+  flashhub:
+    image: flynn28/flashhub 
+    ports:
+      - "5000:5000"
+    volumes:
+      - /path/to/swf/files:/app/public/games
+    restart: always
+```
+```bash
+docker-compose up -d
+```
+
 ## Setup
 
 ### Without Docker
