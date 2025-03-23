@@ -29,7 +29,15 @@ python3 -m server
 5. update game list by visiting `http://localhost:5000/update`
 
 ### Docker-compose
-coming soon
-
-### Docker run
-coming soon
+1. clone repo
+```bash
+git clone https://github.com/flynn-28/flashhub-server
+```
+2. open folder
+```bash
+cd flashhub-server
+```
+3. run container
+```bash
+docker-compose up -d
+```
