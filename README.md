@@ -28,7 +28,7 @@ python3 -m server
 ```
 5. update game list by visiting `http://localhost:5000/update`
 
-### Docker-compose
+### Docker-compose (from source)
 1. clone repo
 ```bash
 git clone https://github.com/flynn-28/flashhub-server
@@ -41,3 +41,38 @@ cd flashhub-server
 ```bash
 docker-compose up -d
 ```
+4. copy swf files into games folder
+5. update game list by visiting `http://localhost:5000/update`
+
+### Docker-compose (without source)
+1. create `docker-compose.yml` file
+2. paste the following code into file
+```yaml
+version: '3.8'
+
+services:
+  flashhub:
+    image: python:3.9-slim
+    container_name: flashhub-server
+    environment:
+      - FLASK_APP=server.py
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    command: >
+      bash -c "
+        apt-get update && apt-get install -y git && \
+        git clone https://github.com/flynn-28/flashhub-server /app && \
+        cd /app && \
+        pip install -r requirements.txt && \
+        python server.py
+      "
+    ports:
+      - "5000:5000"
+```
+3. build and run
+```bash
+docker-compose up -d
+```
+4. copy swf files into games folder
+5. update game list by visiting `http://localhost:5000/update`
