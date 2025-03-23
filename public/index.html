@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Game Player</title>
+    <script src="/public/ruffle/ruffle.js"></script>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="header">
+            <div id="uploadButton" class="upload-icon">
+                <img src="/public/upload-icon.svg" width="25px" height="25px" alt="Upload SWF">
+            </div> 
+            <h2>Select a Game</h2>
+        </div>
+        <div id="games"></div>
+    </aside>
+    <main class="container">
+        <h1 id="title">Flash Game Player</h1>
+        
+        <input type="file" id="fileInput" accept=".swf" style="display:none">
+        <button id="fullscreenToggle">Full Screen</button>
+        <div id="player">
+            <p>Select a game to start playing</p>
+        </div>
+    </main>
+
+    <script src="/public/script.js"></script>
+</body>
+</html>
